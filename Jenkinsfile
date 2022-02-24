@@ -1,12 +1,14 @@
 pipeline {
-  agent any
-  stages {
-    stage('build') {
-      steps {
-          cmakeBuild(
-            installation: 'InSearchPath'
-          )
-      }
+    checkout scm
+    docker.image(rikorose/gcc-cmake) {  
+        stages {
+            stage('build') {
+                steps {
+                    cmakeBuild(
+                        installation: 'InSearchPath'
+                    )
+                }
+            }
+        }   
     }
-  }
 }

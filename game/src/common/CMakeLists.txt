@@ -1,0 +1,1 @@
+add_library(common Game.cpp GameObject.cpp)

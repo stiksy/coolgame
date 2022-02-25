@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                cleanWs()
                 checkout scm
                 script {
                     sh """

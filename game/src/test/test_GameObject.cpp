@@ -10,5 +10,5 @@ TEST(GameObjectTest, CreateObject)
 
 TEST(GameObjectTest, FailTest)
 {
-	ASSERT_EQ(false, false);
+	ASSERT_EQ(false, true);
 }

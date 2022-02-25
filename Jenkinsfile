@@ -35,5 +35,8 @@ pipeline {
                 archiveArtifacts artifacts: 'test.tar.gz'
             }
         }
+        stage('cleanup') {
+            cleanWs()
+        }
     }
 }

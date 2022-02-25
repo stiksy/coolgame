@@ -6,10 +6,10 @@ pipeline {
                 checkout scm
                 script {
                     sh """
-                        mkdir coolgame/build
-                        cmake -S coolgame/game/src -B coolgame/build
-                        cmake --build coolgame/build
-                        tar --exclude='_deps' --exclude='CMakeFiles' --exclude='lib' --exclude='common' -czf build.tar.gz -C coolgame/build .
+                        mkdir build
+                        cmake -S game/src -B build
+                        cmake --build build
+                        tar --exclude='_deps' --exclude='CMakeFiles' --exclude='lib' --exclude='common' -czf build.tar.gz -C build .
                     """
                 }
                 archiveArtifacts artifacts: 'build.tar.gz'
@@ -20,7 +20,7 @@ pipeline {
                 script {
                     try {
                         sh """
-                            cd coolgame/build
+                            cd build
                             ctest
                         """
                     }
@@ -28,7 +28,7 @@ pipeline {
                         unstable(message: "Unit tests have failed, please review the results.")
                     }
                     sh """
-                        tar -czf test.tar.gz -C coolgame/build/Testing/Temporary .
+                        tar -czf test.tar.gz -C build/Testing/Temporary .
                     """
 
                 }

@@ -11,9 +11,14 @@ Solution proposed for the Build Engineer test:
 
 ```
 curl https://raw.githubusercontent.com/stiksy/coolgame/main/Dockerfile -o Dockerfile
+curl https://raw.githubusercontent.com/stiksy/coolgame/main/casc.yaml -o casc.yaml
+curl https://raw.githubusercontent.com/stiksy/coolgame/main/plugins.txt -o plugins.txt
+curl https://raw.githubusercontent.com/stiksy/coolgame/main/config.xml -o config.xml
 docker build -t jenkins:local .
 docker run -d --name jenkins --rm -p 8080:8080 jenkins:local
 ```
+
+<i>Note: the `curl` commands can be ignored if you clone the repository locally before starting.</i>
 
 2. Navigate to http://localhost:8080 and login with `admin`/`password`
 3. Trigger a new build for the CoolGame pipeline.
